@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'l10n/generated/app_localizations.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,6 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -109,6 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text(AppLocalizations.of(context)!.appTitle),
+            SizedBox(),
           ],
         ),
       ),

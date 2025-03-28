@@ -1,0 +1,8 @@
+{
+  "appTitle": "Fitness Coach",
+  "welcome": "Welcome, {name}!",
+  "age": "Age",
+  "weight": "Weight (kg)",
+  "goal": "Training Goal",
+  "generateProgram": "Generate Program"
+}
