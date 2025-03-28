@@ -22,19 +22,19 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const BottomBarPage(),
+      home: const BottomBar(),
     );
   }
 }
 
-class BottomBarPage extends StatefulWidget {
-  const BottomBarPage({super.key});
+class BottomBar extends StatefulWidget {
+  const BottomBar({super.key});
 
   @override
-  State<BottomBarPage> createState() => _BottomBarPageState();
+  State<BottomBar> createState() => _BottomBarState();
 }
 
-class _BottomBarPageState extends State<BottomBarPage> {
+class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     MainScreen(),
