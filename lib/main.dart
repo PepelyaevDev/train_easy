@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:train_easy/ui/main_screen/main_screen.dart';
+import 'package:train_easy/ui/profile_screen/profile_screen.dart';
 import 'l10n/generated/app_localizations.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
@@ -20,29 +22,42 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const MyHomePage(),
+      home: const BottomBarPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class BottomBarPage extends StatefulWidget {
+  const BottomBarPage({super.key});
+
+  @override
+  State<BottomBarPage> createState() => _BottomBarPageState();
+}
+
+class _BottomBarPageState extends State<BottomBarPage> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    MainScreen(),
+    ProfileScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Тест')),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ElevatedButton(onPressed: () {}, child: Text('Кнопка')),
-            const Card(child: ListTile(title: Text('Карточка'))),
-            const TextField(),
-            Switch(value: true, onChanged: (_) {}),
-            const Checkbox(value: true, onChanged: null),
-            Text('Основной текст'),
-          ],
-        ),
+      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'School'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
