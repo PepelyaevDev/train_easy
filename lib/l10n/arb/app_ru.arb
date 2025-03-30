@@ -1,8 +1,4 @@
 {
-  "appTitle": "Фитнес Тренер",
-  "welcome": "Добро пожаловать, {name}!",
-  "age": "Возраст",
-  "weight": "Вес (кг)",
-  "goal": "Цель тренировок",
-  "generateProgram": "Создать программу"
+  "bottomNavWorkouts": "Тренировки",
+  "bottomNavProfile": "Профиль"
 }

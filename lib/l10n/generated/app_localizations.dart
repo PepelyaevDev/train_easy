@@ -95,41 +95,17 @@ abstract class AppLocalizations {
     Locale('ru')
   ];
 
-  /// No description provided for @appTitle.
+  /// No description provided for @bottomNavWorkouts.
   ///
   /// In en, this message translates to:
-  /// **'Fitness Coach'**
-  String get appTitle;
+  /// **'Workouts'**
+  String get bottomNavWorkouts;
 
-  /// No description provided for @welcome.
+  /// No description provided for @bottomNavProfile.
   ///
   /// In en, this message translates to:
-  /// **'Welcome, {name}!'**
-  String welcome(Object name);
-
-  /// No description provided for @age.
-  ///
-  /// In en, this message translates to:
-  /// **'Age'**
-  String get age;
-
-  /// No description provided for @weight.
-  ///
-  /// In en, this message translates to:
-  /// **'Weight (kg)'**
-  String get weight;
-
-  /// No description provided for @goal.
-  ///
-  /// In en, this message translates to:
-  /// **'Training Goal'**
-  String get goal;
-
-  /// No description provided for @generateProgram.
-  ///
-  /// In en, this message translates to:
-  /// **'Generate Program'**
-  String get generateProgram;
+  /// **'Profile'**
+  String get bottomNavProfile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

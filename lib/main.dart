@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:train_easy/ui/main_screen/main_screen.dart';
-import 'package:train_easy/ui/profile_screen/profile_screen.dart';
 import 'l10n/generated/app_localizations.dart';
+import 'ui/bottom_bar/bottom_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,42 +22,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const BottomBar(),
-    );
-  }
-}
-
-class BottomBar extends StatefulWidget {
-  const BottomBar({super.key});
-
-  @override
-  State<BottomBar> createState() => _BottomBarState();
-}
-
-class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    MainScreen(),
-    ProfileScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'School'),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
     );
   }
 }
