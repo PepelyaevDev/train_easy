@@ -6,18 +6,14 @@ part of 'training_parameters.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) =>
-    TrainingParameters(
-      workoutDifficulty:
-          $enumDecode(_$WorkoutDifficultyEnumMap, json['workoutDifficulty']),
+TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) => TrainingParameters(
+      workoutDifficulty: $enumDecode(_$WorkoutDifficultyEnumMap, json['workoutDifficulty']),
       workoutGoal: $enumDecode(_$WorkoutGoalEnumMap, json['workoutGoal']),
       additionalInformation: json['additionalInformation'] as String,
     );
 
-Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) =>
-    <String, dynamic>{
-      'workoutDifficulty':
-          _$WorkoutDifficultyEnumMap[instance.workoutDifficulty]!,
+Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) => <String, dynamic>{
+      'workoutDifficulty': _$WorkoutDifficultyEnumMap[instance.workoutDifficulty]!,
       'workoutGoal': _$WorkoutGoalEnumMap[instance.workoutGoal]!,
       'additionalInformation': instance.additionalInformation,
     };

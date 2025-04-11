@@ -9,8 +9,7 @@ class TrainingProgram {
 
   TrainingProgram({required this.workouts});
 
-  factory TrainingProgram.fromJson(Map<String, dynamic> json) =>
-      _$TrainingProgramFromJson(json);
+  factory TrainingProgram.fromJson(Map<String, dynamic> json) => _$TrainingProgramFromJson(json);
 
   Map<String, dynamic> toJson() => _$TrainingProgramToJson(this);
 }

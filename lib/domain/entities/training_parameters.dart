@@ -16,8 +16,7 @@ class TrainingParameters {
     required this.additionalInformation,
   });
 
-  factory TrainingParameters.fromJson(Map<String, dynamic> json) =>
-      _$TrainingParametersFromJson(json);
+  factory TrainingParameters.fromJson(Map<String, dynamic> json) => _$TrainingParametersFromJson(json);
 
   Map<String, dynamic> toJson() => _$TrainingParametersToJson(this);
 }

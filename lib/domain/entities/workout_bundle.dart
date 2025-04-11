@@ -8,14 +8,15 @@ part 'workout_bundle.g.dart';
 class WorkoutBundle {
   final TrainingProgram trainingProgram;
   final TrainingParameters trainingParameters;
+  final DateTime createTime;
 
   WorkoutBundle({
     required this.trainingProgram,
     required this.trainingParameters,
+    required this.createTime,
   });
 
-  factory WorkoutBundle.fromJson(Map<String, dynamic> json) =>
-      _$WorkoutBundleFromJson(json);
+  factory WorkoutBundle.fromJson(Map<String, dynamic> json) => _$WorkoutBundleFromJson(json);
 
   Map<String, dynamic> toJson() => _$WorkoutBundleToJson(this);
 }
