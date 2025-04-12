@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:train_easy/domain/datasource/local_training_datasource.dart';
+import 'package:train_easy/domain/datasource/local_workout_bundles_datasource.dart';
 import 'package:train_easy/domain/entities/workout_bundles.dart';
 
 const _workoutBundlesKey = 'workoutBundlesKey';
 
-class LocalTrainingDatasourceImpl implements LocalTrainingDatasource {
-  LocalTrainingDatasourceImpl({required this.prefs});
+class LocalWorkoutBundlesDatasourceImpl implements LocalWorkoutBundlesDatasource {
+  LocalWorkoutBundlesDatasourceImpl({required this.prefs});
 
   final SharedPreferences prefs;
 

@@ -1,22 +1,20 @@
 import 'package:flutter/cupertino.dart';
-import 'package:train_easy/domain/datasource/local_training_datasource.dart';
+import 'package:train_easy/domain/datasource/local_workout_bundles_datasource.dart';
 import 'package:train_easy/domain/datasource/remote_training_datasource.dart';
 import 'package:train_easy/domain/entities/training_parameters.dart';
 import 'package:train_easy/domain/entities/workout_bundle.dart';
 import 'package:train_easy/domain/entities/workout_bundles.dart';
 import 'package:train_easy/domain/repo/workout_bundles_repo.dart';
 
-class WorkoutBundlesRepoImpl extends ChangeNotifier implements WorkoutBundlesRepo {
-  WorkoutBundlesRepoImpl({
+class WorkoutBundlesRepoImpl extends ValueNotifier<WorkoutBundles> implements WorkoutBundlesRepo {
+  WorkoutBundlesRepoImpl(
+    super._value, {
     required this.localTrainingDatasource,
     required this.remoteTrainingDatasource,
   });
 
-  final LocalTrainingDatasource localTrainingDatasource;
+  final LocalWorkoutBundlesDatasource localTrainingDatasource;
   final RemoteTrainingDatasource remoteTrainingDatasource;
-
-  @override
-  WorkoutBundles get workoutBundles => localTrainingDatasource.workoutBundles;
 
   @override
   Future<void> createTrainingProgram(TrainingParameters parameters) async {
@@ -33,7 +31,7 @@ class WorkoutBundlesRepoImpl extends ChangeNotifier implements WorkoutBundlesRep
       ],
     );
     await localTrainingDatasource.updateWorkoutBundles(newBundles);
-    notifyListeners();
+    value = newBundles;
   }
 
   @override
@@ -42,6 +40,6 @@ class WorkoutBundlesRepoImpl extends ChangeNotifier implements WorkoutBundlesRep
     newBundlesList.removeWhere((e) => e.createTime == bundle.createTime);
     final newBundles = WorkoutBundles(bundles: newBundlesList);
     await localTrainingDatasource.updateWorkoutBundles(newBundles);
-    notifyListeners();
+    value = newBundles;
   }
 }

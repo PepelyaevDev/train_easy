@@ -10,7 +10,4 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get bottomNavWorkouts => 'Тренировки';
-
-  @override
-  String get bottomNavProfile => 'Профиль';
 }

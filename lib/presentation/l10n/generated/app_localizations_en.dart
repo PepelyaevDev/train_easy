@@ -10,7 +10,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bottomNavWorkouts => 'Workouts';
-
-  @override
-  String get bottomNavProfile => 'Profile';
 }

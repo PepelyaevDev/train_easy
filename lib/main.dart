@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'l10n/generated/app_localizations.dart';
-import 'ui/bottom_bar/bottom_bar.dart';
+import 'presentation/l10n/generated/app_localizations.dart';
+import 'presentation/workouts_screen/workouts_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const BottomBar(),
+      home: const WorkoutsScreen(),
     );
   }
 }
