@@ -17,5 +17,7 @@ TrainingProgram _$TrainingProgramFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TrainingProgramToJson(TrainingProgram instance) =>
     <String, dynamic>{
-      'workouts': instance.workouts,
+      'workouts': instance.workouts
+          .map((e) => e.map((e) => e.toJson()).toList())
+          .toList(),
     };

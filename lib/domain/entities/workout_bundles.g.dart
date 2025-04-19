@@ -15,5 +15,5 @@ WorkoutBundles _$WorkoutBundlesFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$WorkoutBundlesToJson(WorkoutBundles instance) =>
     <String, dynamic>{
-      'bundles': instance.bundles,
+      'bundles': instance.bundles.map((e) => e.toJson()).toList(),
     };

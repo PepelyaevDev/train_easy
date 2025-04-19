@@ -17,7 +17,7 @@ WorkoutBundle _$WorkoutBundleFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$WorkoutBundleToJson(WorkoutBundle instance) =>
     <String, dynamic>{
-      'trainingProgram': instance.trainingProgram,
-      'trainingParameters': instance.trainingParameters,
+      'trainingProgram': instance.trainingProgram.toJson(),
+      'trainingParameters': instance.trainingParameters.toJson(),
       'createTime': instance.createTime.toIso8601String(),
     };
