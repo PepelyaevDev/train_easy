@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'presentation/l10n/generated/app_localizations.dart';
 import 'presentation/workouts_screen/workouts_screen.dart';
 
 void main() {
+  final dio = Dio();
+
   runApp(const MyApp());
 }
 

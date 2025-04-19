@@ -1,5 +1,5 @@
 enum WorkoutDifficulty {
-  beginner,
-  intermediate,
-  advanced,
+  easy,
+  medium,
+  hard,
 }
