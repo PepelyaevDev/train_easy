@@ -13,6 +13,7 @@ TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) =>
           $enumDecode(_$WorkoutDifficultyEnumMap, json['workoutDifficulty']),
       workoutGoal: $enumDecode(_$WorkoutGoalEnumMap, json['workoutGoal']),
       additionalInformation: json['additionalInformation'] as String,
+      locale: json['locale'] as String,
     );
 
 Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) =>
@@ -22,6 +23,7 @@ Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) =>
           _$WorkoutDifficultyEnumMap[instance.workoutDifficulty]!,
       'workoutGoal': _$WorkoutGoalEnumMap[instance.workoutGoal]!,
       'additionalInformation': instance.additionalInformation,
+      'locale': instance.locale,
     };
 
 const _$TrainingLevelEnumMap = {

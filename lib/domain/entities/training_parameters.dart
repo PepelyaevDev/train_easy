@@ -11,12 +11,14 @@ class TrainingParameters {
   final WorkoutDifficulty workoutDifficulty;
   final WorkoutGoal workoutGoal;
   final String additionalInformation;
+  final String locale;
 
   TrainingParameters({
     required this.trainingLevel,
     required this.workoutDifficulty,
     required this.workoutGoal,
     required this.additionalInformation,
+    required this.locale,
   });
 
   factory TrainingParameters.fromJson(Map<String, dynamic> json) => _$TrainingParametersFromJson(json);
