@@ -23,46 +23,44 @@ class RemoteTrainingDatasourceImpl implements RemoteTrainingDatasource {
         },
       ),
       data: {
-        {
-          "model": "deepseek-chat",
-          "temperature": 1.5,
-          "response_format": {"type": "json_object"},
-          "messages": [
-            {
-              "role": "system",
-              "content": 'You are an AI fitness coach. '
-                  'Respond strictly in JSON format. '
-                  'The program should contain an array of workouts, where each workout is an array of exercises. '
-                  'Fields for exercise: '
-                  'name (string: exercise name), '
-                  'instruction (string: execution technique: 2-3 sentences), '
-                  'type (enum: cardio, strength, bodyweight), '
-                  'sets (integer: sets), '
-                  'reps (integer: repetitions), '
-                  'duration (integer: duration in minutes), '
-                  'weight (float: % of 1RM), '
-                  'load (integer: exertion level 1-10 on RPE scale). '
-                  'Rules: '
-                  '1. For strength: sets, reps, weight are required. duration, load are forbidden. '
-                  '2. For bodyweight: sets and load are required. reps, duration, weight are forbidden. '
-                  '3. For cardio: duration and load are required. sets, reps, weight are forbidden. '
-                  'Example answer: ${jsonEncode(_workoutsExampleForSystemPrompt)}',
-            },
-            {
-              "role": "user",
-              "content": 'Create a training program. '
-                  'Training difficulty: ${parameters.workoutDifficulty.name}, '
-                  'my level of training: ${parameters.trainingLevel.name}, '
-                  'my goal: ${_prettyGoal(parameters.workoutGoal)}. '
-                  'Additional information: ${parameters.additionalInformation}, '
-                  'All information in the answer must be in the language: ${parameters.locale}',
-            },
-          ],
-        },
+        "model": "deepseek-chat",
+        "temperature": 1.5,
+        "response_format": {"type": "json_object"},
+        "messages": [
+          {
+            "role": "system",
+            "content": 'You are an AI fitness coach. '
+                'Respond strictly in JSON format. '
+                'The program should contain an array of workouts, where each workout is an array of exercises. '
+                'Fields for exercise: '
+                'name (string: exercise name), '
+                'instruction (string: execution technique: 2-3 sentences), '
+                'type (enum: cardio, strength, bodyweight), '
+                'sets (integer: sets), '
+                'reps (integer: repetitions), '
+                'duration (integer: duration in minutes), '
+                'weight (float: % of 1RM), '
+                'load (integer: exertion level 1-10 on RPE scale). '
+                'Rules: '
+                '1. For strength: sets, reps, weight are required. duration, load are forbidden. '
+                '2. For bodyweight: sets and load are required. reps, duration, weight are forbidden. '
+                '3. For cardio: duration and load are required. sets, reps, weight are forbidden. '
+                'Example answer: ${jsonEncode(_workoutsExampleForSystemPrompt)}',
+          },
+          {
+            "role": "user",
+            "content": 'Create a training program. '
+                'Training difficulty: ${parameters.workoutDifficulty.name}, '
+                'my level of training: ${parameters.trainingLevel.name}, '
+                'my goal: ${_prettyGoal(parameters.workoutGoal)}. '
+                'Additional information: ${parameters.additionalInformation}, '
+                'All information in the answer must be in the language: ${parameters.locale}',
+          },
+        ],
       },
     );
-
-    return TrainingProgram.fromJson(json.decode(response.data) as Map<String, dynamic>);
+    final content = response.data['choices'][0]['message']['content'];
+    return TrainingProgram.fromJson(jsonDecode(content));
   }
 
   String _prettyGoal(WorkoutGoal goal) => switch (goal) {

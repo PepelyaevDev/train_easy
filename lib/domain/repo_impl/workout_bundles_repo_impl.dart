@@ -9,17 +9,17 @@ import 'package:train_easy/domain/repo/workout_bundles_repo.dart';
 class WorkoutBundlesRepoImpl extends ValueNotifier<WorkoutBundles> implements WorkoutBundlesRepo {
   WorkoutBundlesRepoImpl(
     super._value, {
-    required this.localTrainingDatasource,
+    required this.localWorkoutBundlesDatasource,
     required this.remoteTrainingDatasource,
   });
 
-  final LocalWorkoutBundlesDatasource localTrainingDatasource;
+  final LocalWorkoutBundlesDatasource localWorkoutBundlesDatasource;
   final RemoteTrainingDatasource remoteTrainingDatasource;
 
   @override
   Future<void> createTrainingProgram(TrainingParameters parameters) async {
     final newProgram = await remoteTrainingDatasource.createTrainingProgram(parameters);
-    final oldBundlesList = localTrainingDatasource.workoutBundles.bundles;
+    final oldBundlesList = localWorkoutBundlesDatasource.workoutBundles.bundles;
     final newBundles = WorkoutBundles(
       bundles: [
         WorkoutBundle(
@@ -30,16 +30,16 @@ class WorkoutBundlesRepoImpl extends ValueNotifier<WorkoutBundles> implements Wo
         ...oldBundlesList,
       ],
     );
-    await localTrainingDatasource.updateWorkoutBundles(newBundles);
+    await localWorkoutBundlesDatasource.updateWorkoutBundles(newBundles);
     value = newBundles;
   }
 
   @override
   Future<void> deleteWorkoutBundle(WorkoutBundle bundle) async {
-    final newBundlesList = [...localTrainingDatasource.workoutBundles.bundles];
+    final newBundlesList = [...localWorkoutBundlesDatasource.workoutBundles.bundles];
     newBundlesList.removeWhere((e) => e.createTime == bundle.createTime);
     final newBundles = WorkoutBundles(bundles: newBundlesList);
-    await localTrainingDatasource.updateWorkoutBundles(newBundles);
+    await localWorkoutBundlesDatasource.updateWorkoutBundles(newBundles);
     value = newBundles;
   }
 }
