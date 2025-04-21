@@ -125,21 +125,21 @@ class _ExerciseCard extends StatelessWidget {
 
     if (exercise.duration != null) {
       parameters.add(Text(
-        '${exercise.duration} сек',
+        '${exercise.duration} мин',
         style: Theme.of(context).textTheme.labelLarge,
       ));
     }
 
     if (exercise.weight != null) {
       parameters.add(Text(
-        '${exercise.weight} кг',
+        '${exercise.weight}% 1ПМ',
         style: Theme.of(context).textTheme.labelLarge,
       ));
     }
 
     if (exercise.load != null) {
       parameters.add(Text(
-        'Нагрузка: ${exercise.load}%',
+        'Нагрузка: ${exercise.load! * 10}%',
         style: Theme.of(context).textTheme.labelLarge,
       ));
     }
