@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:train_easy/domain/datasource/local_workout_bundles_datasource.dart';
 import 'package:train_easy/domain/datasource/remote_training_datasource.dart';
 import 'package:train_easy/domain/entities/training_parameters.dart';
-import 'package:train_easy/domain/entities/workout_bundle.dart';
 import 'package:train_easy/domain/entities/workout_bundles.dart';
 import 'package:train_easy/domain/repo/workout_bundles_repo.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:train_easy/domain/entities/exercise.dart';
+import 'package:train_easy/domain/entities/training_program.dart';
 import 'package:train_easy/domain/repo/workout_bundles_repo.dart';
 import 'package:train_easy/presentation/create_workout_screen/create_workout_screen.dart';
 import 'package:train_easy/presentation/workouts_screen/workouts_bloc.dart';
@@ -23,7 +23,8 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
     return BlocBuilder<WorkoutsBloc, WorkoutsState>(
       bloc: _workoutsBloc!,
       builder: (context, state) {
-        final workouts = state.bundles.bundles.isEmpty ? [] : state.bundles.bundles.first.trainingProgram.workouts;
+        final List<Workout> workouts =
+            state.bundles.bundles.isEmpty ? [] : state.bundles.bundles.first.trainingProgram.workouts;
         return Scaffold(
           appBar: AppBar(
             title: const Text('Программа тренировок'),
@@ -47,13 +48,13 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                   }
                 });
               },
-              children: workouts.map<ExpansionPanel>((workout) {
+              children: workouts.map<ExpansionPanel>((Workout workout) {
                 final index = workouts.indexOf(workout);
                 return ExpansionPanel(
                   canTapOnHeader: true,
                   isExpanded: index == _selectedDay,
                   headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(title: Text('Day ${index + 1}'));
+                    return ListTile(title: Text('Train ${index + 1}'));
                   },
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +67,9 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      ...workout.map((exercise) => _ExerciseCard(exercise: exercise)),
+                      ...workout.wormUp.map((exercise) => _ExerciseCard(exercise: exercise)),
+                      ...workout.mainPath.map((exercise) => _ExerciseCard(exercise: exercise)),
+                      ...workout.callDown.map((exercise) => _ExerciseCard(exercise: exercise)),
                     ],
                   ),
                 );
@@ -96,58 +99,21 @@ class _ExerciseCard extends StatelessWidget {
           children: [
             Text(
               exercise.name,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    // fontWeight: FontWeight.w500,
-                  ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              exercise.instruction,
+              exercise.technique,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 8),
-            _buildExerciseParameters(context),
+            Text(
+              exercise.specifications,
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildExerciseParameters(BuildContext context) {
-    final parameters = <Widget>[];
-
-    if (exercise.sets != null && exercise.reps != null) {
-      parameters.add(Text(
-        '${exercise.sets} × ${exercise.reps}',
-        style: Theme.of(context).textTheme.labelLarge,
-      ));
-    }
-
-    if (exercise.duration != null) {
-      parameters.add(Text(
-        '${exercise.duration} мин',
-        style: Theme.of(context).textTheme.labelLarge,
-      ));
-    }
-
-    if (exercise.weight != null) {
-      parameters.add(Text(
-        '${exercise.weight}% 1ПМ',
-        style: Theme.of(context).textTheme.labelLarge,
-      ));
-    }
-
-    if (exercise.load != null) {
-      parameters.add(Text(
-        'Нагрузка: ${exercise.load! * 10}%',
-        style: Theme.of(context).textTheme.labelLarge,
-      ));
-    }
-
-    return Wrap(
-      spacing: 16,
-      runSpacing: 8,
-      children: parameters,
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:train_easy/domain/entities/workout_bundle.dart';
 import 'package:train_easy/domain/entities/workout_bundles.dart';
 
 sealed class WorkoutsEvent {

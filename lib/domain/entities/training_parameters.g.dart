@@ -9,20 +9,16 @@ part of 'training_parameters.dart';
 TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) =>
     TrainingParameters(
       trainingLevel: $enumDecode(_$TrainingLevelEnumMap, json['trainingLevel']),
-      workoutDifficulty:
-          $enumDecode(_$WorkoutDifficultyEnumMap, json['workoutDifficulty']),
       workoutGoal: $enumDecode(_$WorkoutGoalEnumMap, json['workoutGoal']),
-      additionalInformation: json['additionalInformation'] as String,
+      workoutsCount: (json['workoutsCount'] as num).toInt(),
       locale: json['locale'] as String,
     );
 
 Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) =>
     <String, dynamic>{
       'trainingLevel': _$TrainingLevelEnumMap[instance.trainingLevel]!,
-      'workoutDifficulty':
-          _$WorkoutDifficultyEnumMap[instance.workoutDifficulty]!,
       'workoutGoal': _$WorkoutGoalEnumMap[instance.workoutGoal]!,
-      'additionalInformation': instance.additionalInformation,
+      'workoutsCount': instance.workoutsCount,
       'locale': instance.locale,
     };
 
@@ -30,12 +26,6 @@ const _$TrainingLevelEnumMap = {
   TrainingLevel.beginner: 'beginner',
   TrainingLevel.intermediate: 'intermediate',
   TrainingLevel.advanced: 'advanced',
-};
-
-const _$WorkoutDifficultyEnumMap = {
-  WorkoutDifficulty.easy: 'easy',
-  WorkoutDifficulty.medium: 'medium',
-  WorkoutDifficulty.hard: 'hard',
 };
 
 const _$WorkoutGoalEnumMap = {
