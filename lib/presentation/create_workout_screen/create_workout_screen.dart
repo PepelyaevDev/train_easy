@@ -20,7 +20,7 @@ class _CreateWorkoutScreenState extends State<CreateWorkoutScreen> {
   Widget build(BuildContext context) {
     _createWorkoutBloc ??= CreateWorkoutBloc(bundlesRepo: context.read<WorkoutBundlesRepo>());
     return BlocBuilder<CreateWorkoutBloc, CreateWorkoutState>(
-      bloc: _createWorkoutBloc!,
+      bloc: _createWorkoutBloc,
       builder: (context, state) {
         return ElevatedButton(
           onPressed: () {
@@ -31,12 +31,13 @@ class _CreateWorkoutScreenState extends State<CreateWorkoutScreen> {
                   workoutGoal: WorkoutGoal.muscleGain,
                   workoutsCount: 4,
                   locale: 'ru',
+                  name: DateTime.now().toString(),
                 ),
               ),
             );
             Navigator.of(context).pop();
           },
-          child: Text('create'),
+          child: const Text('create'),
         );
       },
     );

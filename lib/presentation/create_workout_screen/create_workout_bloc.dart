@@ -5,20 +5,20 @@ import 'package:train_easy/presentation/create_workout_screen/create_workout_eve
 import 'package:train_easy/presentation/create_workout_screen/create_workout_state.dart';
 
 class CreateWorkoutBloc extends Bloc<CreateWorkoutEvent, CreateWorkoutState> {
-  final WorkoutBundlesRepo bundlesRepo;
-
   CreateWorkoutBloc({
     required this.bundlesRepo,
   }) : super(CreateWorkoutStateInit()) {
     on<CreateWorkoutEvent>(_createWorkoutEventHandler, transformer: droppable());
   }
 
-  Future<void> _createWorkoutEventHandler(CreateWorkoutEvent event, emit) async {
+  final WorkoutBundlesRepo bundlesRepo;
+
+  Future<void> _createWorkoutEventHandler(CreateWorkoutEvent event, Emitter<CreateWorkoutState> emit) async {
     try {
       emit(CreateWorkoutStateLoading());
       await bundlesRepo.createTrainingProgram(event.parameters);
       emit(CreateWorkoutStateSuccess());
-    } catch (e) {
+    } on Exception catch (_) {
       emit(CreateWorkoutStateError());
     }
   }

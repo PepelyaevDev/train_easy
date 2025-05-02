@@ -6,20 +6,20 @@ part of 'training_parameters.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) =>
-    TrainingParameters(
+TrainingParameters _$TrainingParametersFromJson(Map<String, dynamic> json) => TrainingParameters(
       trainingLevel: $enumDecode(_$TrainingLevelEnumMap, json['trainingLevel']),
       workoutGoal: $enumDecode(_$WorkoutGoalEnumMap, json['workoutGoal']),
       workoutsCount: (json['workoutsCount'] as num).toInt(),
       locale: json['locale'] as String,
+      name: json['name'] as String,
     );
 
-Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TrainingParametersToJson(TrainingParameters instance) => <String, dynamic>{
       'trainingLevel': _$TrainingLevelEnumMap[instance.trainingLevel]!,
       'workoutGoal': _$WorkoutGoalEnumMap[instance.workoutGoal]!,
       'workoutsCount': instance.workoutsCount,
       'locale': instance.locale,
+      'name': instance.name,
     };
 
 const _$TrainingLevelEnumMap = {

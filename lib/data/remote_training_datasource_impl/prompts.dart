@@ -29,7 +29,7 @@ abstract class PromptLines {
     required bool useFloor,
     required String locale,
   }) =>
-      'Create a complete pre- and post-workout program.'
+      'Create a complete pre- and post-workout program. '
       'The "warmUp" should include '
       'one cardio exercise (5–7 minutes) to increase heart rate and warm up the body, '
       'as well as ten dynamic exercises to warm up all muscle groups and joints. '
@@ -59,8 +59,8 @@ abstract class PromptLines {
 
   static const systemWormUpAndCallDown = '$_inputData'
       'Fields: '
-      '"wormUp" (required, list of exercises for worm up)'
-      '"callDown" (required, list of exercises for call down)'
+      '"wormUp" (required, list of exercises for worm up); '
+      '"callDown" (required, list of exercises for call down). '
       '$_exerciseFields'
       '$_specificationRulesTitle'
       '$_specificationRulesCardio'
@@ -69,9 +69,9 @@ abstract class PromptLines {
 
   static const systemMainPath = '$_inputData'
       'Fields: '
-      '"workouts" (required, list of workouts).'
+      '"workouts" (required, list of workouts). '
       'Workout fields: '
-      '"mainPath" (required, list of exercises)'
+      '"mainPath" (required, list of exercises). '
       '$_exerciseFields'
       '$_specificationRulesTitle'
       '$_specificationRulesStrength'

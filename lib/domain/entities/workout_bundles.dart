@@ -6,23 +6,18 @@ part 'workout_bundles.g.dart';
 
 @JsonSerializable()
 class WorkoutBundles {
-  final List<WorkoutBundle> bundles;
-
   WorkoutBundles({
     required this.bundles,
   });
 
   factory WorkoutBundles.fromJson(Map<String, dynamic> json) => _$WorkoutBundlesFromJson(json);
+  final List<WorkoutBundle> bundles;
 
   Map<String, dynamic> toJson() => _$WorkoutBundlesToJson(this);
 }
 
 @JsonSerializable()
 class WorkoutBundle {
-  final TrainingProgram trainingProgram;
-  final TrainingParameters trainingParameters;
-  final DateTime createTime;
-
   WorkoutBundle({
     required this.trainingProgram,
     required this.trainingParameters,
@@ -30,6 +25,9 @@ class WorkoutBundle {
   });
 
   factory WorkoutBundle.fromJson(Map<String, dynamic> json) => _$WorkoutBundleFromJson(json);
+  final TrainingProgram trainingProgram;
+  final TrainingParameters trainingParameters;
+  final DateTime createTime;
 
   Map<String, dynamic> toJson() => _$WorkoutBundleToJson(this);
 }

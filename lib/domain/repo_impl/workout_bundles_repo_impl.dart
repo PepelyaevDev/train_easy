@@ -35,8 +35,8 @@ class WorkoutBundlesRepoImpl extends ValueNotifier<WorkoutBundles> implements Wo
 
   @override
   Future<void> deleteWorkoutBundle(WorkoutBundle bundle) async {
-    final newBundlesList = [...localWorkoutBundlesDatasource.workoutBundles.bundles];
-    newBundlesList.removeWhere((e) => e.createTime == bundle.createTime);
+    final newBundlesList = [...localWorkoutBundlesDatasource.workoutBundles.bundles]
+      ..removeWhere((e) => e.createTime == bundle.createTime);
     final newBundles = WorkoutBundles(bundles: newBundlesList);
     await localWorkoutBundlesDatasource.updateWorkoutBundles(newBundles);
     value = newBundles;

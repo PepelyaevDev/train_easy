@@ -14,7 +14,7 @@ class LocalWorkoutBundlesDatasourceImpl implements LocalWorkoutBundlesDatasource
   WorkoutBundles get workoutBundles {
     final bundlesString = prefs.getString(_workoutBundlesKey);
     if (bundlesString == null) return WorkoutBundles(bundles: []);
-    return WorkoutBundles.fromJson(json.decode(bundlesString));
+    return WorkoutBundles.fromJson(json.decode(bundlesString) as Map<String, dynamic>);
   }
 
   @override
