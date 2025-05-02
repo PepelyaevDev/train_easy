@@ -1,3 +1,11 @@
 {
-  "bottomNavWorkouts": "Workouts"
+  "day": "Day",
+  "warmUp": "Warm-up",
+  "mainPath": "Workout",
+  "callDown": "Cool-down",
+  "warmUpDesc": "Warm-up helps to warm up muscles and joints, improve blood circulation, reduce injury risk, increase flexibility, and prepare the cardiovascular system",
+  "mainPathDesc": "Main workout",
+  "callDownDesc": "Cool-down helps restore breathing, relax muscles and speed up recovery after exercise",
+  "noPrograms": "You don't have any workout programs",
+  "createProgram": "Create"
 }

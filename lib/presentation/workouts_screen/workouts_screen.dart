@@ -4,6 +4,7 @@ import 'package:train_easy/domain/entities/training_program.dart';
 import 'package:train_easy/domain/entities/workout_bundles.dart';
 import 'package:train_easy/domain/repo/workout_bundles_repo.dart';
 import 'package:train_easy/presentation/create_workout_screen/create_workout_screen.dart';
+import 'package:train_easy/presentation/l10n/context_locale_ext.dart';
 import 'package:train_easy/presentation/workouts_screen/workouts_bloc.dart';
 import 'package:train_easy/presentation/workouts_screen/workouts_events.dart';
 import 'package:train_easy/presentation/workouts_screen/workouts_state.dart';
@@ -52,7 +53,10 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('No Items create first'),
+                        Text(
+                          context.localization.noPrograms,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                         const SizedBox(height: 8),
                         ElevatedButton(
                           onPressed: () {
@@ -60,7 +64,7 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                               MaterialPageRoute<dynamic>(builder: (_) => const CreateWorkoutScreen()),
                             );
                           },
-                          child: const Text('create'),
+                          child: Text(context.localization.createProgram),
                         ),
                       ],
                     ),
@@ -92,7 +96,7 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                             onPressed: () {
                               _workoutsBloc!.add(WorkoutsEventDelete(bundle: state.bundles[state.program]));
                             },
-                            icon: const Icon(Icons.delete),
+                            icon: const Icon(Icons.delete_outline),
                           ),
                         ],
                       ),
@@ -103,7 +107,7 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                             .map(
                               ((int index, Workout bundle) e) => ButtonSegment<int>(
                                 value: e.$1,
-                                label: Text('Day ${e.$1 + 1}'),
+                                label: Text('${context.localization.day} ${e.$1 + 1}'),
                               ),
                             )
                             .toList(),
@@ -121,7 +125,13 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                             .map(
                               (e) => ButtonSegment<TrainingStage>(
                                 value: e,
-                                label: Text(e.name),
+                                label: Text(
+                                  switch (e) {
+                                    TrainingStage.wormUp => context.localization.warmUp,
+                                    TrainingStage.mainPath => context.localization.mainPath,
+                                    TrainingStage.callDown => context.localization.callDown,
+                                  },
+                                ),
                               ),
                             )
                             .toList(),
@@ -134,14 +144,13 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Список упражнений '
-                        'Список упражнений '
-                        'Список упражнений '
-                        'Список упражнений '
-                        'Список упражнений '
-                        'Список упражнений '
-                        'Список упражнений',
-                        style: Theme.of(context).textTheme.labelMedium,
+                        switch (state.stage) {
+                          TrainingStage.wormUp => context.localization.warmUpDesc,
+                          TrainingStage.mainPath => context.localization.mainPathDesc,
+                          TrainingStage.callDown => context.localization.callDownDesc,
+                        },
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       const SizedBox(height: 8),
                       ...List<Widget>.generate(

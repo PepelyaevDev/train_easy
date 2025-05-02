@@ -9,5 +9,29 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get bottomNavWorkouts => 'Workouts';
+  String get day => 'Day';
+
+  @override
+  String get warmUp => 'Warm-up';
+
+  @override
+  String get mainPath => 'Workout';
+
+  @override
+  String get callDown => 'Cool-down';
+
+  @override
+  String get warmUpDesc => 'Warm-up helps to warm up muscles and joints, improve blood circulation, reduce injury risk, increase flexibility, and prepare the cardiovascular system';
+
+  @override
+  String get mainPathDesc => 'Main workout';
+
+  @override
+  String get callDownDesc => 'Cool-down helps restore breathing, relax muscles and speed up recovery after exercise';
+
+  @override
+  String get noPrograms => 'You don\'t have any workout programs';
+
+  @override
+  String get createProgram => 'Create';
 }

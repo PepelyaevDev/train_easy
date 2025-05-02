@@ -95,11 +95,59 @@ abstract class AppLocalizations {
     Locale('ru')
   ];
 
-  /// No description provided for @bottomNavWorkouts.
+  /// No description provided for @day.
   ///
   /// In en, this message translates to:
-  /// **'Workouts'**
-  String get bottomNavWorkouts;
+  /// **'Day'**
+  String get day;
+
+  /// No description provided for @warmUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm-up'**
+  String get warmUp;
+
+  /// No description provided for @mainPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout'**
+  String get mainPath;
+
+  /// No description provided for @callDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Cool-down'**
+  String get callDown;
+
+  /// No description provided for @warmUpDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm-up helps to warm up muscles and joints, improve blood circulation, reduce injury risk, increase flexibility, and prepare the cardiovascular system'**
+  String get warmUpDesc;
+
+  /// No description provided for @mainPathDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Main workout'**
+  String get mainPathDesc;
+
+  /// No description provided for @callDownDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Cool-down helps restore breathing, relax muscles and speed up recovery after exercise'**
+  String get callDownDesc;
+
+  /// No description provided for @noPrograms.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any workout programs'**
+  String get noPrograms;
+
+  /// No description provided for @createProgram.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get createProgram;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
