@@ -122,7 +122,7 @@ abstract class AppLocalizations {
   /// No description provided for @warmUpDesc.
   ///
   /// In en, this message translates to:
-  /// **'Warm-up helps to warm up muscles and joints, improve blood circulation, reduce injury risk, increase flexibility, and prepare the cardiovascular system'**
+  /// **'Warm-up helps warm up muscles and joints, improve blood circulation, reduce injury risk, increase flexibility, and prepare the cardiovascular system'**
   String get warmUpDesc;
 
   /// No description provided for @mainPathDesc.
@@ -134,7 +134,7 @@ abstract class AppLocalizations {
   /// No description provided for @callDownDesc.
   ///
   /// In en, this message translates to:
-  /// **'Cool-down helps restore breathing, relax muscles and speed up recovery after exercise'**
+  /// **'Cool-down helps restore breathing, relax muscles, and speed up recovery after exercise'**
   String get callDownDesc;
 
   /// No description provided for @noPrograms.
@@ -148,6 +148,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create'**
   String get createProgram;
+
+  /// No description provided for @deleteProgram.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete workout program?'**
+  String get deleteProgram;
+
+  /// No description provided for @deleteProgramDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'You can create several different programs. After deletion, recovery will be impossible'**
+  String get deleteProgramDesc;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

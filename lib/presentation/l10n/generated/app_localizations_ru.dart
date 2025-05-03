@@ -34,4 +34,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get createProgram => 'Создать';
+
+  @override
+  String get deleteProgram => 'Удалить программу тренировок?';
+
+  @override
+  String get deleteProgramDesc => 'Вы можете создать несколько различных программ. После удаления, восстановление будет невозможным.';
+
+  @override
+  String get delete => 'Удалить';
+
+  @override
+  String get close => 'Закрыть';
 }

@@ -94,7 +94,14 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
                           ),
                           IconButton(
                             onPressed: () {
-                              _workoutsBloc!.add(WorkoutsEventDelete(bundle: state.bundles[state.program]));
+                              openDeleteDialog(
+                                context,
+                                () => _workoutsBloc!.add(
+                                  WorkoutsEventDelete(
+                                    bundle: state.bundles[state.program],
+                                  ),
+                                ),
+                              );
                             },
                             icon: const Icon(Icons.delete_outline),
                           ),
@@ -187,6 +194,34 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
           ),
         );
       },
+    );
+  }
+
+  void openDeleteDialog(BuildContext context, VoidCallback deleteCallback) {
+    showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.localization.deleteProgram),
+        content: Text(context.localization.deleteProgramDesc),
+        actions: <Widget>[
+          TextButton(
+            child: Text(
+              context.localization.delete,
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+            ),
+            onPressed: () {
+              deleteCallback.call();
+              Navigator.of(context).pop();
+            },
+          ),
+          FilledButton(
+            child: Text(context.localization.close),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ],
+      ),
     );
   }
 }
